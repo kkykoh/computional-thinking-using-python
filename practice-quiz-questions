@@ -1,0 +1,541 @@
+# 45 Practice Questions — Loops/Filtering, Strings/Dicts, Algorithm Tracing + OOP (same difficulty level as your source set)
+
+## Section A: Loop & Filtering Code (Q1–10)
+
+**Q1.** Fill in the blanks. The code below should skip any reading that is `None` and skip any reading that is exactly `100.0` (a sensor-saturation flag value). Valid readings go into `valid_readings`, and their sum is printed.
+
+humidity = [45.2, None, 100.0, 62.8, None, 71.0, 100.0, 38.5]
+
+valid_readings = []
+
+index = __(i)__
+
+while index < len(humidity) and __(ii)__:
+
+    curr = humidity[index]
+
+    if __(iii)__:
+
+        valid_readings.__(iv)__(curr)
+
+    __(v)__
+
+print(”Valid:”, valid_readings)
+
+print(”Sum:”, __(vi)__)
+
+Fill in (i) through (vi).
+
+**Q2.** Using your corrected code from Q1, what is the final value of `index` after the loop finishes? Answer with an integer.
+
+**Q3.** What is the final contents of `valid_readings` from Q1’s corrected code?
+
+**Q4.** What value does `Sum:` print in Q1?
+
+**Q5.** Trace this loop and give the final value of `counter`:
+
+counter = 1
+
+threshold = 50
+
+while counter < threshold:
+
+    counter = counter * 2
+
+**Q6.** Fill in the blank(s) so this code stores only non-empty, non-`None` names into `clean_names`:
+
+raw_names = [”Alice”, “”, None, “Bob”, “”, “Carol”, None]
+
+clean_names = []
+
+for name in raw_names:
+
+    if __(a)__:
+
+        clean_names.append(name)
+
+**Q7.** Trace this loop. What is the final value of `running_max`?
+
+values = [3, 7, 2, 9, 4, 9, 1]
+
+running_max = values[0]
+
+i = 1
+
+while i < len(values):
+
+    if values[i] > running_max:
+
+        running_max = values[i]
+
+    i += 1
+
+**Q8.** Fill in the blank so the loop stops processing as soon as it hits the sentinel value `-1`, and `processed` contains everything scanned *before* that point:
+
+data = [4, 8, 15, -1, 16, 23]
+
+processed = []
+
+for item in data:
+
+    if item == -1:
+
+        __(a)__
+
+    processed.append(item)
+
+**Q9.** Rewrite the `while`-loop version of Q1 as an equivalent single `for` loop using `enumerate()`. What role does the `index` variable play in that rewrite — is it still necessary?
+
+**Q10.** This loop has an off-by-one bug:
+
+data = [10, 20, 30]
+
+index = 0
+
+while index <= len(data):
+
+    print(data[index])
+
+    index += 1
+
+What error occurs, on which iteration, and what is the one-character fix?
+
+## Section B: OOP Debugging — identify the errors (Q11–20)
+
+**Q11.** The `Inventory` class below has **3 errors**. Identify each error (one per line) and give a one-line fix for each.
+
+class Inventory:
+
+    define __init__(self, stock=0):
+
+        self.stock = stock
+
+    def add_stock(self, amount):
+
+        self.stock = amount
+
+    def remove_stock(self, amount):
+
+        self.stock - amount
+
+**Q12.** The `Queue` class below has **3 errors**. Identify each and give a one-line fix.
+
+class Queue:
+
+    def __init__(self):
+
+        self.items = []
+
+    def enqueue(self, item):
+
+        self.items.append[item]
+
+    def dequeue(self):
+
+        return self.items.pop(0)
+
+    def is_empty(self):
+
+        if self.items = []:
+
+            return True
+
+**Q13.** The `Student` class below has **2 errors** in its GPA calculation. Identify each and give a one-line fix.
+
+class Student:
+
+    def __init__(self, grades):
+
+        self.grades = grades
+
+    def average_grade(self):
+
+        total = sum(self.grades)
+
+        return total / len(grade)
+
+**Q14.** The `Book` class below has **3 errors** in its borrow/return state logic. Identify each and give a one-line fix.
+
+class Book:
+
+    def __init__(self):
+
+        self.is_borrowed = False
+
+    def borrow(self):
+
+        if self.is_borrowed = False:
+
+            is_borrowed = True
+
+    def return_book(self):
+
+        self.is_borrowed = True
+
+**Q15.** Using your corrected `Inventory` class from Q11, trace the following and give the final value of `stock`:
+
+inv = Inventory(20)
+
+inv.add_stock(5)
+
+inv.remove_stock(8)
+
+print(inv.stock)
+
+**Q16.** The `ShoppingCart` class below has **3 errors**. Identify each and give a one-line fix.
+
+class ShoppingCart:
+
+    def __init__(self):
+
+        total = 0
+
+    def add_item(self, price):
+
+        self.total = self.total + “price”
+
+    def get_total(self):
+
+        return total
+
+```
+
+**Q17.** Using your corrected `ShoppingCart` from Q16, trace:
+
+cart = ShoppingCart()
+
+cart.add_item(10)
+
+cart.add_item(15.5)
+
+print(cart.get_total())
+
+What is printed?
+
+**Q18.** The `TempConverter` class below has **2 errors**. Identify each and give a one-line fix.
+
+class TempConverter:
+
+    def __init__(self, celsius):
+
+        self.celsius = celsius
+
+    def to_fahrenheit(self):
+
+        return self.celsius * 9/5 - 32
+
+**Q19.** Using your corrected `TempConverter` from Q18, what does `TempConverter(100).to_fahrenheit()` return?
+
+**Q20.** The `Vault` class below has **3 errors**, including one logic bug that lets `balance` go negative without being flagged. Identify each and give a one-line fix.
+
+class Vault:
+
+    def __init__(self, balance):
+
+        self.balance = balance
+
+        self.locked = false
+
+    def withdraw(self, amount):
+
+        self.balance = self.balance - amount
+
+        if self.balance < 0
+
+            self.locked = True
+
+## Section C: Inheritance — Yes/No + justify (Q21–30)
+
+For each pair below, state **Yes** or **No** for whether a new method must be implemented in the subclass, and justify in 1–2 sentences. If Yes, state the method’s parameters.
+
+**Q21.** `SavingsAccount` inherits from `Account`. It adds an `interest_rate` attribute set at creation time, in addition to the normal optional starting balance. Does `SavingsAccount` need a new `__init__`?
+
+**Q22.** Does `SavingsAccount` (Q21) need a new `transfer` method, given `transfer` behaves identically to the base class?
+
+**Q23.** `PriorityQueue` inherits from `Queue` (Q12). When `enqueue`-ing a priority item, it should be inserted at the *front* of the list instead of the back. Does `PriorityQueue` need a new `enqueue` method?
+
+**Q24.** Does `PriorityQueue` (Q23) need a new `dequeue` method, given dequeue still just removes from the front?
+
+**Q25.** `Manager` inherits from `Employee`. `Employee.__init__` takes only `salary`; `Manager` must additionally store a `bonus` amount at creation. Does `Manager` need a new `__init__`? If yes, what are its parameters?
+
+**Q26.** `Employee.calculate_pay()` returns `self.salary`. `Manager.calculate_pay()` must return `self.salary + self.bonus`. Does `Manager` need to override `calculate_pay`?
+
+**Q27.** `ElectricCar` inherits from `Car`. `Car.__init__` takes `make` and `model`; `ElectricCar` must additionally store `battery_level` at creation. Does `ElectricCar` need a new `__init__`? If yes, what are its parameters?
+
+**Q28.** `Car` has a `refuel(self, litres)` method that adds to `self.fuel`. `ElectricCar` has no `fuel` attribute at all. Does `ElectricCar` need to override `refuel`? Justify.
+
+**Q29.** `VIPQueue` inherits from `Queue` (Q12). Its `dequeue` must remove and return the *highest-priority* item (not simply the front of the list), but `enqueue` is unchanged. Does `VIPQueue` need a new `dequeue` method? What, if anything, can it reuse from the parent class via `super()`?
+
+**Q30.** In 2–3 sentences, state the general rule for deciding whether a subclass needs to override `__init__` (or any method) versus relying on inheritance unchanged — and explain what role `super()` plays when a subclass needs to *extend* rather than fully *replace* a parent method.
+
+## Section D: Strings & Dictionaries (Q31–38)
+
+**Q31.** Fill in the blanks. The code should count occurrences of each word, but skip any word shorter than 3 characters:
+
+words = [”cat”, “a”, “dog”, “it”, “cat”, “bird”, “to”, “dog”, “dog”]
+
+counts = {}
+
+for word in words:
+
+    if __(i)__:
+
+        if word in counts:
+
+            counts[word] = __(ii)__
+
+        else:
+
+            counts[word] = __(iii)__
+
+print(counts)
+
+**Q32.** Using your corrected code from Q31, what is the final value of `counts`?
+
+**Q33.** Fill in the blanks. The code parses `”key=value”` strings into a dictionary, skipping any entry that doesn’t contain `”=”`:
+
+pairs = [”name=Tom”, “age”, “city=NYC”, “”, “age=30”]
+
+parsed = {}
+
+for p in pairs:
+
+    if __(i)__:
+
+        key, value = p.split(”=”)
+
+        parsed[__(ii)__] = __(iii)__
+
+print(parsed)
+
+**Q34.** Using your corrected code from Q33, what is the final value of `parsed`?
+
+**Q35.** Trace this loop. What is printed?
+
+s = “hello”
+
+result = “”
+
+i = len(s) - 1
+
+while i >= 0:
+
+    result += s[i]
+
+    i -= 1
+
+print(result)
+
+**Q36.** Fill in the blank so this loop counts only lowercase vowels (`a, e, i, o, u`), ignoring uppercase vowels entirely:
+
+text = “Hello World Automation”
+
+vowel_count = 0
+
+index = 0
+
+while index < len(text):
+
+    if __(a)__:
+
+        vowel_count += 1
+
+    index += 1
+
+print(vowel_count)
+
+**Q37.** Using your corrected code from Q36, what is the final value of `vowel_count`?
+
+**Q38.** Trace this loop. What string does it print?
+
+word = “abc”
+
+shifted = “”
+
+for ch in word:
+
+    shifted += chr(ord(ch) + 1)
+
+print(shifted)
+
+## Section E: Nested Lists & Algorithm Tracing (Q39–45)
+
+**Q39.** Trace this nested-loop flattening code. What is the final value of `flat`?
+
+matrix = [[1, 2], [3, 4, 5], [6]]
+
+flat = []
+
+i = 0
+
+while i < len(matrix):
+
+    j = 0
+
+    while j < len(matrix[i]):
+
+        flat.append(matrix[i][j])
+
+        j += 1
+
+    i += 1
+
+print(flat)
+
+**Q40.** Using Q39’s code, what are the final values of `i` and `j` after both loops finish?
+
+**Q41.** Fill in the blank so this code performs a single left-to-right adjacent-swap pass (like one pass of bubble sort):
+
+nums = [5, 2, 4, 1]
+
+i = 0
+
+while i < len(nums) - 1:
+
+    if nums[i] > nums[i+1]:
+
+        __(a)__
+
+    i += 1
+
+print(nums)
+
+**Q42.** Using your corrected code from Q41, what is the final value of `nums` after this single pass?
+
+**Q43.** Trace this linear search. What value is printed?
+
+nums = [3, 9, 7, 2, 7]
+
+target = 7
+
+index = 0
+
+found_index = -1
+
+while index < len(nums):
+
+    if nums[index] == target:
+
+        found_index = index
+
+        break
+
+    index += 1
+
+print(found_index)
+
+**Q44.** Fill in the blanks so this code adds only even numbers to `total`, skips odd numbers, and stops as soon as `total` exceeds 20:
+
+nums = [4, 7, 10, 3, 8, 100]
+
+total = 0
+
+for n in nums:
+
+    if __(i)__:
+
+        continue
+
+    total += n
+
+    if __(ii)__:
+
+        break
+
+print(total)
+
+**Q45.** Using your corrected code from Q44, what is the final value of `total`?
+
+---
+
+## Answer Key
+
+1. (i) `0`  (ii) `humidity[index] is not None`  (iii) `curr != 100.0`  (iv) `append`  (v) `index += 1`  (vi) `sum(valid_readings)`
+
+2. `8`
+
+3. `[45.2, 62.8, 71.0, 38.5]`
+
+4. `217.5`
+
+5. `64` (1→2→4→8→16→32→64; stops once ≥50)
+
+6. (a) `name is not None and name != “”`
+
+7. `9`
+
+8. (a) `break`
+
+9. `for index, item in enumerate(humidity):` — `index` is no longer strictly necessary since `enumerate` supplies it automatically; you’d only keep using it if you needed the position for something besides iteration.
+
+10. `IndexError: list index out of range` on the 4th iteration (`index == 3`, but valid indices are 0–2); fix: `while index < len(data):`
+
+11. (a) `define` → `def`; (b) `add_stock` should accumulate: `self.stock = self.stock + amount` (or `self.stock += amount`); (c) `remove_stock` missing assignment: `self.stock = self.stock - amount`
+
+12. (a) `self.items.append[item]` → `self.items.append(item)`; (b) `if self.items = []:` → `if self.items == []:` (or `if not self.items:`); (c) missing `return False` / no `else` branch when not empty — add `else: return False`
+
+13. (a) `len(grade)` → `len(self.grades)`; (b) (same root cause counted as the second instance) — ensure attribute reference is `self.grades` not bare `grade/grades`
+
+14. (a) `if self.is_borrowed = False:` → `if self.is_borrowed == False:` (or `if not self.is_borrowed:`); (b) `is_borrowed = True` missing `self.`: `self.is_borrowed = True`; (c) `return_book` always sets `True` instead of `False`: `self.is_borrowed = False`
+
+15. `17` (20 + 5 − 8)
+
+16. (a) `total = 0` in `__init__` missing `self.`: `self.total = 0`; (b) adding a string instead of number: `self.total = self.total + price`; (c) `get_total` references bare `total` instead of `self.total`: `return self.total`
+
+17. `25.5`
+
+18. (a) operator precedence bug — formula should be `(self.celsius * 9/5) + 32`, not `- 32`; (b) (same single-line bug counted as the formula being wrong overall) — fix the sign: `return self.celsius * 9/5 + 32`
+
+19. `212`
+
+20. (a) `false` → `False` (Python booleans are capitalized); (b) missing colon: `if self.balance < 0:`; (c) logic bug — code sets `locked` but never prevents the withdrawal that caused it; fix (one line): check *before* debiting, e.g. `if amount > self.balance: self.locked = True` instead of allowing the debit unconditionally
+
+21. **Yes** — base `__init__` only accepts `balance`; `SavingsAccount` must also accept and store `interest_rate`. Parameters: `self, balance=0, interest_rate`.
+
+22. **No** — `transfer` behavior is unchanged from the base class, so it’s inherited as-is.
+
+23. **Yes** — base `enqueue` appends to the end; priority insertion at the front requires different logic (e.g., `self.items.insert(0, item)`).
+
+24. **No** — dequeue logic (remove from front) is identical to the base class, so it’s inherited unchanged.
+
+25. **Yes** — base `__init__` only takes `salary`; `Manager` needs `bonus` too. Parameters: `self, salary, bonus`.
+
+26. **Yes** — the return calculation differs (`salary + bonus` vs just `salary`), so it must be overridden.
+
+27. **Yes** — needs an extra parameter beyond the base class. Parameters: `self, make, model, battery_level`.
+
+28. **Yes** (or must be handled explicitly) — since `ElectricCar` has no `fuel` attribute, inheriting `refuel` unchanged would error (`AttributeError`) or be semantically wrong; it should be overridden (e.g., to raise `NotImplementedError` or do nothing).
+
+29. **Yes** — removal criterion (highest priority vs FIFO front) differs from the base class, so `dequeue` must be overridden; `enqueue` is unchanged and fully reused from `Queue`.
+
+30. A method only needs overriding when its *behavior* differs from the parent’s; if the subclass’s version is a strict superset of the parent’s logic (e.g., same steps plus one extra step), `super().method(...)` lets it call the parent’s implementation first and then add the new behavior, avoiding duplicated code. If behavior is identical, no override is needed at all.
+
+31. (i) `len(word) >= 3`  (ii) `counts[word] + 1`  (iii) `1`
+
+32. `{’cat’: 2, ‘dog’: 3, ‘bird’: 1}`
+
+33. (i) `”=” in p`  (ii) `key`  (iii) `value`
+
+34. `{’name’: ‘Tom’, ‘city’: ‘NYC’, ‘age’: ‘30’}`
+
+35. `olleh`
+
+36. (a) `text[index] in “aeiou”`
+
+37. `8` — lowercase vowels only, skipping the capital `A`: “Hello” → e, o (2); “World” → o (1); “Automation” → u, o, a, i, o (5, skipping the leading capital `A`). Total: 2 + 1 + 5 = 8.
+
+38. `bcd`
+
+39. `[1, 2, 3, 4, 5, 6]`
+
+40. `i == 3`, `j == 1` (after the last inner loop runs for `matrix[2] = [6]`, which has length 1, so `j` increments 0→1 and stops)
+
+41. (a) `nums[i], nums[i+1] = nums[i+1], nums[i]`
+
+42. `[2, 4, 1, 5]`
+
+43. `2`
+
+44. (i) `n % 2 != 0`  (ii) `total > 20`
+
+45. `22` (4 → skip 7 → 14 → skip 3 → 22, then breaks since 22 > 20)
